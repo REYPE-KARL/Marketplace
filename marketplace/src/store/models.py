@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse
 
 """
 Product
@@ -9,6 +10,7 @@ Product
 - Stock (integer)
 - Description (text)
 - Image (image)
+- Slug (slug)
 
 """
 
@@ -18,6 +20,10 @@ class Product (models.Model):
     stock = models.IntegerField(default=0)
     description = models.TextField(blank=True)
     thumbnail = models.ImageField(upload_to="products", blank=True, null=True)
+    slug = models.SlugField(max_length=128)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("product", kwargs={"slug": self.slug})
