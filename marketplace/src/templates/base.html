@@ -15,10 +15,14 @@
         {{ user.username }}
         <a href="{% url 'logout' %}">Déconnexion</a>
     {% else %}
+        <a href="{% url 'login' %}"><h1>Se connecter</h1></a>
         <a href="{% url 'signup' %}"><h1>S'inscrire</h1></a>
     {% endif %}
 
     {% block content %}
     {% endblock %}
+    <a href="{% url 'contact' %}">
+        <h1>Contact</h1>
+    </a>
 </body>
 </html>

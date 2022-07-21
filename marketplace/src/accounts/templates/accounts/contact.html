@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Contact</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% if not user.is_authenticated %}
+        <p>
+            <label for="username">Entrer votre nom</label>
+            <input id="username" type="text" name="username">
+        </p>
+        <p>
+            <label for="email">Entrer votre email</label>
+            <input id="email" type="text" name="email">
+        </p>
+        {% endif %}
+        <p>
+            <label for="subject">Entrer le sujet</label>
+            <input id="subject" type="text" name="subject">
+        </p>
+        <p>
+            <label for="message">Entrer votre message</label>
+            <textarea id="message" name="message"></textarea>
+        </p>
+        <button type="submit">Envoyer le message</button>
+    </form>
+
+{% endblock %}
