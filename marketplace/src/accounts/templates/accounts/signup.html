@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% block content %}
     <h1></h1>
     <form method="POST">
@@ -27,29 +28,15 @@
             <input id="cpassword" name="cpassword" type="text">
         </p>
 
-        {%for message in messages %}
-            {%if "user_name" in message.tags %}
-                <p> {{message}} </p>   {# show login error user_name message #}
-            {%endif%}
-            {%if "email" in message.tags %}
-                <p> {{message}} </p>   {# show login error email message #}
-            {%endif%}
-            {%if "password1" in message.tags %}
-                <p> {{message}} </p>   {# show login error password message #}
-            {%endif%}
-            {%if "password2" in message.tags %}
-                <p> {{message}} </p>   {# show login error confirpassword message #}
-            {%endif%}
-            {%if "first_name" in message.tags %}
-                <p> {{message}} </p>   {# show login error first_name message #}
-            {%endif%}
-            {%if "last_name" in message.tags %}
-                <p> {{message}} </p>   {# show login error last_name message #}
-            {%endif%}
-            {%if "confirm" in message.tags %}
-                <p> {{message}} </p>   {# show login error confirm message #}
-            {%endif%}
-        {%endfor%}
+        {% if messages %}
+        <ul class="messages">
+            {%for message in messages %}
+            <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
+                {{message}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
         <button type="submit">S'inscrire</button>
     </form>

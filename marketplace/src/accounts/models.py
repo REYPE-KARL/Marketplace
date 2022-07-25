@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 
@@ -11,7 +13,8 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_('User must have a user name'))
 
         email = self.normalize_email(email)
-        user = self.model(email=email, user_name=user_name, **extra_fields)
+        slug = slugify(user_name)
+        user = self.model(email=email, user_name=user_name, slug=slug, **extra_fields)
         user.set_password(password)
         user.save()
         return user
@@ -34,6 +37,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
     user_name = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
+    slug = models.SlugField(max_length=150, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -49,6 +53,9 @@ class CustomUser(AbstractUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+    def get_absolute_url(self):
+        return reverse("profile", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.user_name

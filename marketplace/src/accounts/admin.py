@@ -5,13 +5,13 @@ from .models import CustomUser
 
 
 class UserAdminConfig(UserAdmin):
-    search_fields = ('email', 'user_name', 'last_name',)
+    search_fields = ('email', 'user_name', 'first_name', 'last_name',)
     list_filter = ('email', 'user_name', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser',)
     ordering = ('user_name',)
 
     list_display = ('email', 'user_name', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser',)
     fieldsets = (
-        (None, {'fields': ('email', 'user_name', 'first_name', 'last_name', 'password',)}),
+        (None, {'fields': ('email', 'user_name', 'slug', 'first_name', 'last_name', 'password',)}),
         ('Permissions', {'fields': ('is_active', 'is_staff',)}),
     )
     add_fieldsets = (

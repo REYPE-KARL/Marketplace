@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.http import HttpResponse
 from accounts.models import CustomUser
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 def signup(request):
@@ -44,6 +44,7 @@ def signup(request):
 
     return render(request, 'accounts/signup.html')
 
+
 def login_user(request):
     if request.method == "POST":
         email = request.POST.get("email")
@@ -67,6 +68,12 @@ def login_user(request):
 
     return render(request, 'accounts/login.html')
 
+
 def logout_user(request):
     logout(request)
     return redirect('index')
+
+
+def profile_user(request, slug):
+    user = get_object_or_404(CustomUser, slug=slug)
+    return render(request, 'accounts/profile.html', context={"user": user})

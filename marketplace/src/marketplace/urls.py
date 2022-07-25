@@ -17,7 +17,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from accounts.views import signup, logout_user, login_user
+from accounts.views import signup, logout_user, login_user, profile_user
+from contacts.views import contact
 from marketplace import settings
 
 
@@ -31,6 +32,10 @@ urlpatterns = [
     path('signup/', signup, name="signup"),
     path('logout/', logout_user, name="logout"),
     path('login/', login_user, name="login"),
+    path('profile/<str:slug>/', profile_user, name="profile"),
+
+    #contact's page
+    path('contact/', contact, name="contact"),
 
 
 

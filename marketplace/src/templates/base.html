@@ -11,7 +11,9 @@
         <h1>Marketplace</h1>
     </a>
     {% if user.is_authenticated %}
-        {{ user.user_name }}
+        <a href="{{ user.get_absolute_url }}">
+            {{ user.user_name }}
+        </a>
         <a href="{% url 'logout' %}">Déconnexion</a>
     {% else %}
         <a href="{% url 'signup' %}">S'inscrire</a>
@@ -21,7 +23,9 @@
     {% block content %}
     {% endblock %}
 
-    <h1>Contact</h1>
+    <a href="{% url 'contact' %}">
+        <h1>Contact</h1>
+    </a>
 
 </body>
 </html>

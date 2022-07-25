@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1></h1>
     <form method="POST">
         {% csrf_token %}
         <p>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="text">
+            <label for="cname">Votre nom</label>
+            <input id="cname" name="cname" type="text">
         </p>
         <p>
-            <label for="password">Mot de Passe</label>
-            <input id="password" name="password" type="text">
+            <label for="cemail">Email</label>
+            <input id="cemail" name="cemail" type="text">
+        </p>
+
+            <label for="csubject">Sujet</label>
+            <textarea id="csubject" name="csubject" cols="30" rows="10"></textarea>
         </p>
 
         {% if messages %}
@@ -23,8 +26,7 @@
         </ul>
         {% endif %}
 
-        <button type="submit">S'inscrire</button>
+        <button type="submit">Envoyer</button>
     </form>
-
 
 {% endblock %}
