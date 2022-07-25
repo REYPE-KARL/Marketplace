@@ -4,6 +4,9 @@ from django.test import TestCase
 
 
 # Create your tests here.
+from django.urls import reverse
+
+
 class UsersManagersTests(TestCase):
 
     def test_create_user(self):
@@ -18,6 +21,9 @@ class UsersManagersTests(TestCase):
         self.assertTrue(user.has_perms(['app_name.permission_code_name']))
         self.assertTrue(user.has_module_perms('myModule'))
         self.assertEqual(str(user), f'{user.user_name}')
+
+        url = reverse("profile", kwargs={"slug": user.slug})
+        self.assertEqual(user.get_absolute_url(), url)
 
         try:
             # username is None for the AbstractUser option
