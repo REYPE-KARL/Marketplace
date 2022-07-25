@@ -10,19 +10,18 @@
     <a href="{% url 'index' %}">
         <h1>Marketplace</h1>
     </a>
-
     {% if user.is_authenticated %}
-        {{ user.username }}
+        {{ user.user_name }}
         <a href="{% url 'logout' %}">Déconnexion</a>
     {% else %}
-        <a href="{% url 'login' %}"><h1>Se connecter</h1></a>
-        <a href="{% url 'signup' %}"><h1>S'inscrire</h1></a>
+        <a href="{% url 'signup' %}">S'inscrire</a>
+        <a href="{% url 'login' %}">Se connecter</a>
     {% endif %}
 
     {% block content %}
     {% endblock %}
-    <a href="{% url 'contact' %}">
-        <h1>Contact</h1>
-    </a>
+
+    <h1>Contact</h1>
+
 </body>
 </html>
