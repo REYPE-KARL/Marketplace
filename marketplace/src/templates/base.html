@@ -3,34 +3,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Marketplace</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- Box Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <a href="{% url 'index' %}">
-        <h1>Marketplace</h1>
-    </a>
+    <header>
+        <div class="navbar container">
+            <a href="{% url 'index' %}" id="logo">
+                Marketplace
+            </a>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{{ user.get_absolute_url }}">{{ user.user_name }}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Déconnexion</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'signup' %}">S'inscrire</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login' %}">Se connecter</a>
+                    </li>
+                    {% endif %}
 
-    {% if user.is_authenticated %}
-        <a href="{{ user.get_absolute_url }}">
-            {{ user.user_name }}
-        </a>
-        <a href="{% url 'logout' %}">Déconnexion</a>
-    {% else %}
-        <a href="{% url 'signup' %}">S'inscrire</a>
-        <a href="{% url 'login' %}">Se connecter</a>
-    {% endif %}
-
-    {% if user.cart %}
-    <a href="{% url 'cart' %}">Voir le panier ({{ user.cart.orders.count }})</a>
-    {%endif%}
+                    {% if user.cart %}
+                    <li>
+                        <a href="{% url 'cart' %}">
+                            <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     {% block content %}
     {% endblock %}
 
-    <a href="{% url 'contact' %}">
-        <h1>Contact</h1>
-    </a>
-
+    <footer>
+        <div class= "footbar container">
+            <h1 id="titlecontact">Gardons le contact !</h1>
+            <div class="faction">
+                
+                <ul class="block" >
+                    <li><i class='bx bxl-facebook-square' id="social-icon"></i></li>
+                    <li><i class='bx bxl-twitter' id="social-icon"></i></li>
+                    <li><i class='bx bxl-instagram' id="social-icon"></i></li>
+                </ul>
+                <div class="block square_div"></div>
+                <div class="block">
+                    <a href="{% url 'contact' %}" id="contact">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
+    
+<!--
+
+                <ul class="column">
+                    <li><a href="">Facebook</a></li>
+                    <li><a href="">Twitter</a></li>
+                    <li><a href="">Instagram</a></li>
+                </ul>
+                <a class="column" href=""><h1>Texte pour contact</h1></a>
+-->

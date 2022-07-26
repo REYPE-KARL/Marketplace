@@ -1,6 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- shop-->
+<section class="shop container">
+    <h2 class="section-title">Produits de la boutique</h2>
+    <!-- content -->
+    <div class="shop-content">
+        {% for product in products %}
+        <div class="product-box">
+            <a href="{{ product.get_absolute_url }}">
+            <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" class="product-img">
+            </a>
+            <h2 class="product-title">{{ product.name }}</h2>
+            <h3 class="product-price">{{ product.price }} €</h2>
+            <div class="button">
+                <div class="background">
+                </div>
+                <i class='bx bx-shopping-bag add-cart'></i>
+                <span>Ajouter au panier</span>
+            </div>
+            <a href="{{ product.get_absolute_url }}" class="product-article">Voir l'article</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<!--
+<i class='bx bx-shopping-bag'></i>
 
 {% for product in products %}
     <h2>{{ product.name }}</h2>
@@ -8,5 +33,5 @@
     <h2>{{ product.price }}</h2>
     <a href="{{ product.get_absolute_url }}">Voir l'article</a>
 {% endfor %}
-
+-->
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1></h1>
+<section class="container">
     <form method="POST">
         {% csrf_token %}
         <p>
@@ -40,6 +40,5 @@
 
         <button type="submit">S'inscrire</button>
     </form>
-
-
+</section>
 {% endblock %}
