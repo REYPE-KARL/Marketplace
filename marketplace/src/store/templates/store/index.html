@@ -13,25 +13,18 @@
             </a>
             <h2 class="product-title">{{ product.name }}</h2>
             <h3 class="product-price">{{ product.price }} €</h2>
-            <div class="button">
-                <div class="background">
+            {% if user.is_authenticated %}
+            <a href="{% url 'add-to-cart-index' product.slug %}">
+                <div class="button add-btn">
+                    <div class="background"></div>
+                    <i class='bx bx-shopping-bag add-cart'></i>
+                    <span>Ajouter au panier</span>
                 </div>
-                <i class='bx bx-shopping-bag add-cart'></i>
-                <span>Ajouter au panier</span>
-            </div>
+            </a>
+            {% endif %}
             <a href="{{ product.get_absolute_url }}" class="product-article">Voir l'article</a>
         </div>
         {% endfor %}
     </div>
 </section>
-<!--
-<i class='bx bx-shopping-bag'></i>
-
-{% for product in products %}
-    <h2>{{ product.name }}</h2>
-    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width:250px;">
-    <h2>{{ product.price }}</h2>
-    <a href="{{ product.get_absolute_url }}">Voir l'article</a>
-{% endfor %}
--->
 {% endblock %}

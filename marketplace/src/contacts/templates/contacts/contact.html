@@ -1,33 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="container">
+<section class="contact container">
+    <h2 class="section-title">Contactez nous!</h2>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label for="cname">Votre nom</label>
-            <input id="cname" name="cname" type="text">
-        </p>
-        <p>
-            <label for="cemail">Email</label>
-            <input id="cemail" name="cemail" type="text">
-        </p>
+        <div class="flex-form">
+            <ul>
+                <li>
+                    <label for="cname">Votre nom</label>
+                    <input id="cname" name="cname" type="text">
+                </li>
+                <li>
+                    <label for="cemail">Email</label>
+                    <input id="cemail" name="cemail" type="text">
+                </li>
+                <li>
+                    <label for="csubject">Sujet</label>
+                    <textarea id="csubject" name="csubject" ></textarea>
+                </li>
 
-            <label for="csubject">Sujet</label>
-            <textarea id="csubject" name="csubject" cols="30" rows="10"></textarea>
-        </p>
+            {% if messages %}
+                {%for message in messages %}
+                <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
+                    {{message}}
+                </li>
+                {% endfor %}
+            {% endif %}
 
-        {% if messages %}
-        <ul class="messages">
-            {%for message in messages %}
-            <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
-                {{message}}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-        <button type="submit">Envoyer</button>
+                <li>
+                    <button type="submit">Envoyer</button>
+                </li>
+            </ul>
+        </div>
     </form>
 </section>
+
 {% endblock %}

@@ -2,9 +2,12 @@
 
 {% block content %}
 <section class="container">
-    <h1>{{user.user_name}}</h1>
-    <h1>{{user.first_name}}</h1>
-    <h1>{{user.last_name}}</h1>
-    <h1>{{user.email}}</h1>
+    <h2 class="section-title">Mon panier</h2>
+    <div class="profile-detail">
+        <p>Nom d'utilisateur: {{user.user_name}}</p>
+        <p>Prénom: {{user.first_name}}</p>
+        <p>Nom: {{user.last_name}}</p>
+        <p>Email: {{user.email}}</p>
+    </div>
 </section >
 {% endblock %}

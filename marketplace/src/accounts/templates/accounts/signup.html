@@ -1,44 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="container">
+    <h2 class="section-title">Créer mon compte</h2>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label for="first_name">Prénom</label>
-            <input id="first_name" name="first_name" type="text">
-        </p>
-        <p>
-            <label for="last_name">Nom</label>
-            <input id="last_name" name="last_name" type="text">
-        </p>
-        <p>
-            <label for="user_name">Nom d'utilisateur</label>
-            <input id="user_name" name="user_name" type="text">
-        </p>
-        <p>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="text">
-        </p>
-        <p>
-            <label for="password">Mot de Passe</label>
-            <input id="password" name="password" type="text">
-        </p>
-        <p>
-            <label for="cpassword">Confirmation du mot de Passe</label>
-            <input id="cpassword" name="cpassword" type="text">
-        </p>
+        <div class="flex-form">
+            <ul>
+                <li>
+                    <label for="first_name">Prénom</label>
+                    <input id="first_name" name="first_name" type="text">
+                </li>
+                <li>
+                    <label for="last_name">Nom</label>
+                    <input id="last_name" name="last_name" type="text">
+                </li>
+                <li>
+                    <label for="user_name">Nom d'utilisateur</label>
+                    <input id="user_name" name="user_name" type="text">
+                </li>
+                <li>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text">
+                </li>
+                <li>
+                    <label for="password">Mot de Passe</label>
+                    <input id="password" name="password" type="text">
+                </li>
+                <li>
+                    <label for="cpassword">Confirmation du mot de Passe</label>
+                    <input id="cpassword" name="cpassword" type="text">
+                </li>
 
-        {% if messages %}
-        <ul class="messages">
-            {%for message in messages %}
-            <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
-                {{message}}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if messages %}
+                {%for message in messages %}
+                <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
+                    {{message}}
+                </li>
+                {% endfor %}
+            {% endif %}
 
-        <button type="submit">S'inscrire</button>
+                <li>
+                    <button type="submit">S'inscrire</button>
+                </li>
+            </ul>
+        </div>        
     </form>
 </section>
 {% endblock %}

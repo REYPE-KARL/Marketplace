@@ -1,6 +1,6 @@
 from django.urls import path
 
-from store.views import index, product_detail, add_to_cart, cart, delete_cart, order_cart
+from store.views import index, product_detail, add_to_cart, add_to_cart_index, cart, delete_cart, order_cart
 
 urlpatterns = [
     path('', index, name='index'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('cart/delete', delete_cart, name='delete-cart'),
     path('product/<str:slug>/', product_detail, name='product'),
     path('product/<str:slug>/add-to-cart/', add_to_cart, name='add-to-cart'),
+    path('product/<str:slug>/add-to-cart-index/', add_to_cart_index, name='add-to-cart-index'),
 ]

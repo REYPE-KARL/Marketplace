@@ -13,11 +13,15 @@
 }
 
 :root {
+    /*background*/
     --main-color:#6ABCE0;
     --secondary-color:#0D6FD8;
-    --text-color:#000;
+    --form-color: #E7E7E7;
     --bg-color:#fff;
-
+    /*text*/
+    --text-color:#000;
+    --error-color: #FF0000;
+    --success-color: #00C200;
 }
 
 body {
@@ -44,9 +48,19 @@ section {
     margin: 1.5rem 0;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+
 a{
     text-decoration: none;
 }
+
 
 /*------------------------
         Header 
@@ -56,7 +70,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--main-color);
+    background-color: var(--main-color);
     z-index: 100;
 }
 
@@ -92,6 +106,14 @@ nav ul li a {
     font-weight: 700;
 }
 
+#cart-link {
+    text-align: center;
+}
+
+#cart-link p {
+    font-size: 1rem;
+}
+
 #cart-icon {
     font-size: 2.2rem;
     color: var(--bg-color);
@@ -107,11 +129,11 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--secondary-color);
+    background-color: var(--secondary-color);
     justify-items: center;
 }
 
-.footbar{
+.footbar {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -119,16 +141,16 @@ footer {
     gap: 10px;
 }
 
-.faction{
+.faction {
     display: block;
 }
 
-.block{
+.social-block {
     display: inline-block;
     vertical-align: middle;
 }
 
-.block li {
+.social-block li {
     display: inline;
 }
 
@@ -163,8 +185,6 @@ footer {
 /*------------------------
         Index 
 ------------------------*/
-
-
 .shop-content {
     display: grid;
     grid-template-columns: repeat(3, minmax(390px, 700px));
@@ -200,11 +220,19 @@ footer {
     color: var(--text-color);
 }
 
+.product-box:hover {
+    margin: 10px;
+}
+
+.product-article:hover {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
 .button {
     position: absolute;
     right: 0;
     bottom: 0;
-    height: 40px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -215,19 +243,246 @@ footer {
     
 }
 
-.button .background {
+
+/*------------------------
+        detail 
+------------------------*/
+.article-detail {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    padding: 30px 30px 30px 30px;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+}
+
+.article-viewer {
+    min-width:600px;
+    max-width:650px;
+    min-height:400px;
+    max-height:450px;
+}
+
+.article-sidebar{
+    margin-left: 200px;
+    width: 100%;
+}
+
+.article-info {
+    flex: 0 0 auto;
+    text-align: left;
+}
+
+.article-info p{
+    margin-bottom: 20px;
+}
+
+.article-info p:last-child {
+    margin-bottom: 0px;
+}
+
+.price_amount {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stock_amount {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.article-btn {
+    position: relative;
+    display: flex;
+    right: 0;
+    align-items: center;
+    cursor: pointer;
+}
+
+.article-description{
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 10px; 
+    background-color: var(--form-color);
+}
+
+
+/*------------------------
+        cart 
+------------------------*/
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-detail {
+    flex: auto;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top:40px; 
+    padding: 20px;   
+    min-width: 700px;
+    max-width: 700px;
+    border: 1px solid var(--main-color);
+}
+
+.cart-detail:first-child {
+    margin-top: 0px;
+}
+
+.cart-detail img{
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.cart-sidebar{
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--form-color);
+}
+
+.cart-sidebar p{
+    margin-bottom: 20px;
+}
+
+.cart-sidebar p:last-child {
+    margin-bottom: 0px;
+}
+
+.cart-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.cart-actions {
+    margin: 10px 0px;
+}
+
+.cart-actions a {
+    margin: 0px 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--main-color);
+}
+
+.cart-actions a:hover {
+    color: var(--secondary-color);
+}
+
+
+/*------------------------
+        form 
+------------------------*/
+.profile-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-detail p{
+    margin: 0px 10px;
+    font-size: 1.5rem;
+}
+
+
+/*------------------------
+        form 
+------------------------*/
+.flex-form{
+    display: flex;
+    justify-content: center;
+}
+
+.flex-form ul {
+    flex: auto;
+    border-radius: 10px;
+    background-color: var(--form-color);
+    padding: 50px;   
+    max-width: 900px;
+}
+
+.flex-form ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.flex-form ul li label{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--main-color);
+}
+
+.flex-form ul .error{
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--error-color);
+}
+
+.flex-form ul .success{
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.flex-form ul li input,
+.flex-form ul li textarea {
+    font-size: 1.1rem;
+    font-weight: 400;
+    border: 1px solid var(--main-color);
+}
+
+.flex-form ul li input{
+    width: 410px;
+    height: 50px;
+    padding: 10px;
+}
+
+.flex-form ul li textarea{
+    resize: both;
+    min-width: 410px;
+    max-width: 410px;
+    min-height: 150px;
+    max-height: 200px;
+    padding: 10px;
+}
+
+.flex-form ul li button{
+    margin: auto;
+    width: 50%;
+    height: 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid var(--main-color);
+    border-radius: 80px;
+    background-color: var(--bg-color);
+    color: var(--main-color);
+}
+
+.flex-form ul li button:hover{
+    background-color: var(--main-color);
+    color: white;
+}
+
+/*------------------------
+        button buy 
+------------------------*/
+.background {
     position: absolute;
     width: 45px;
     height: 40px;
     border-radius: 80px;
-    background: var(--main-color);
+    background-color: var(--main-color);
     transition: width 250ms ease-in;
     z-index: -1;
 }
 
 .add-cart {
     position: relative;
-    color: white;
+    color: var(--bg-color);
     font-size: 1.5rem;
     padding: 10px;
     z-index: 1;
@@ -245,20 +500,10 @@ span {
     z-index: 1;
 }
 
-.product-box:hover {
-    margin: 10px;
-}
-
-.product-article:hover {
-    color: var(--main-color);
-    text-decoration: underline;
-}
-
-.button:hover .background{
+.add-btn:hover .background{
     width: 100%;
 }
 
-.button:hover span{
-    color: white;
+.add-btn:hover span{
+    color: var(--bg-color);
 }
-

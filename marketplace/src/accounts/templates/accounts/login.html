@@ -2,28 +2,33 @@
 
 {% block content %}
 <section class="container">
+    <h2 class="section-title">Me Connecter</h2>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="text">
-        </p>
-        <p>
-            <label for="password">Mot de Passe</label>
-            <input id="password" name="password" type="text">
-        </p>
+        <div class="flex-form">
+            <ul>
+                <li>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text">
+                </li>
+                <li>
+                    <label for="password">Mot de Passe</label>
+                    <input id="password" name="password" type="text">
+                </li>
 
-        {% if messages %}
-        <ul class="messages">
-            {%for message in messages %}
-            <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
-                {{message}}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+            {% if messages %}
+                {%for message in messages %}
+                <li {%if message.tags %} class="{{ message.tags }}" {%endif%}>
+                    {{message}}
+                </li>
+                {% endfor %}
+            {% endif %}
 
-        <button type="submit">S'inscrire</button>
+                <li>
+                    <button type="submit">S'inscrire</button>
+                </li>
+            </ul>
+        </div> 
     </form>
 </section>
 

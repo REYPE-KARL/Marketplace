@@ -25,7 +25,7 @@ def contact(request):
         contact.email = email
         contact.subject = subject
         contact.save()
-        messages.success(request, 'Message envoyé. Merci de nous avoir contacter. ')
+        messages.success(request, 'Votre message a été envoyé. Merci de nous avoir contacter.')
         return redirect('contact')
 
     return render(request, 'contacts/contact.html')

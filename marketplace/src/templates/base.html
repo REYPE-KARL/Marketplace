@@ -36,11 +36,11 @@
                         <a href="{% url 'login' %}">Se connecter</a>
                     </li>
                     {% endif %}
-
                     {% if user.cart %}
-                    <li>
+                    <li id="cart-link">
                         <a href="{% url 'cart' %}">
                             <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i>
+                            <p>Voir le panier ({{ user.cart.orders.count }})</p>
                         </a>
                     </li>
                     {% endif %}
@@ -57,13 +57,13 @@
             <h1 id="titlecontact">Gardons le contact !</h1>
             <div class="faction">
                 
-                <ul class="block" >
+                <ul class="social-block" >
                     <li><i class='bx bxl-facebook-square' id="social-icon"></i></li>
                     <li><i class='bx bxl-twitter' id="social-icon"></i></li>
                     <li><i class='bx bxl-instagram' id="social-icon"></i></li>
                 </ul>
-                <div class="block square_div"></div>
-                <div class="block">
+                <div class="social-block square_div"></div>
+                <div class="social-block">
                     <a href="{% url 'contact' %}" id="contact">
                         Contact
                     </a>
