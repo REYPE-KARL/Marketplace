@@ -11,6 +11,6 @@ Mon projet sert de tester mes compétences en créant un site e-commerce avec un
 6. You can use this app. you can find superuser connection server below this post. ;)
 
 ## Superuser connection server:
-user: admin@example.fr
+email user: admin@example.fr
 
 psw: admin123
