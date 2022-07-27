@@ -12,4 +12,5 @@ Mon projet sert de tester mes compétences en créant un site e-commerce avec un
 
 ## Superuser connection server:
 user: admin@example.fr
+
 psw: admin123
